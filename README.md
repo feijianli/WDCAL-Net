@@ -1,6 +1,6 @@
-# SOANet
+# WDCAL-Net
 ## Introduction
-- SOANet is an open source, PyTorch-based segmentation framework for 3D medical image. 
+- WDCAL-Net is an open source, PyTorch-based segmentation framework for 3D medical image. 
 
 ## Installation
 #### Environment
