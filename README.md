@@ -1,31 +1,17 @@
-# EfficientSegmentation
+# SOANet
 ## Introduction
-- EfficientSegmentation is an open source, PyTorch-based segmentation framework for 3D medical image. 
-- For more information about efficientSegmentation, please read the following paper:
-[Efficient Context-Aware Network for Abdominal Multi-organ Segmentation](https://arxiv.org/abs/2109.10601). Please also cite this paper if you are using the method for your research!
-
-## Features
-- A whole-volume-based coarse-to-fine segmentation framework. The segmentation network is decomposed into different components, including basic encoder, slim decoder and efficient context blocks.
-  Anisotropic convolution block and anisotropic context block are designed for efficient and effective segmentation.
-- Pre-process data in multi-process. Distributed and Apex training support. In the inference phase, preprocess and postprocess are computed in GPU.
-- This method won the 1st place on the [2021-MICCAI-FLARE](https://flare.grand-challenge.org/Awards/) challenge. Where participants were required to effectively and efficiently segment multi-organ in abdominal CT.
-## Benchmark
-| Task | Architecture | Parameters(MB) | Flops(GB) | DSC | NSC | Inference time(s) | GPU memory(MB) |
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|[FLARE21](https://flare.grand-challenge.org/FLARE21/)| BaseUNet | 11 | 812 | 0.908 | 0.837 | 0.92 | 3183 |
-|[FLARE21](https://flare.grand-challenge.org/FLARE21/)| EfficientSegNet | 9 | 333 | 0.919 | 0.848 | 0.46 | 2269 |
-
+- SOANet is an open source, PyTorch-based segmentation framework for 3D medical image. 
 
 ## Installation
 #### Environment
 - Ubuntu 16.04.12
 - Python 3.6+
-- Pytorch 1.5.0+
-- CUDA 10.0+ 
+- Pytorch 1.10.1
+- CUDA 11.6
 
 1.Git clone
 ```
-git clone https://github.com/Shanghai-Aitrox-Technology/EfficientSegmentation.git
+git clone https://github.com/feijianli/WDCAL-Net.git
 ```
 
 2.Install Nvidia Apex
@@ -43,7 +29,7 @@ pip install -r requirements.txt
 
 ## Get Started
 ### preprocessing
-1. Download [FLARE21](https://flare.grand-challenge.org/Data/), resulting in 361 training images and masks, 50 validation images.
+1. Download [Synapse](https://www.synapse.org/Synapse:syn3193805/wiki/217789), resulting in 19 training images and masks, 5 validation images.
 2. Copy image and mask to 'FlareSeg/dataset/' folder.
 3. Edit the 'FlareSeg/data_prepare/config.yaml'. 
    'DATA_BASE_DIR'(Default: FlareSeg/dataset/) is the base dir of databases.
@@ -76,10 +62,10 @@ DATA_BASE_DIR directory structure：
     ├──'val_series_uids.txt',
     ├──'lesion_case.txt',
 ├── db
-    ├──seg_raw_train         # The 361 training data information.
-    ├──seg_raw_test          # The 50 validation images information.
-    ├──seg_train_database    # The default training database.
-    ├──seg_val_database      # The default validation database.
+    ├──seg_raw_train        
+    ├──seg_raw_test         
+    ├──seg_train_database  
+    ├──seg_val_database      
     ├──seg_pre-process_database # Temporary database.
     ├──seg_train_fold_1
     ├──seg_val_fold_1
@@ -119,16 +105,8 @@ The data information is stored in the lmdb file with the following format:
 }
 ```
 
-### Models
-- Models can be downloaded through [Baidu Netdisk](https://pan.baidu.com/s/1vk-hyBWGac-d63t1uKo9hA), password: pwuk 
-- Put the models in the "FlareSeg/model_weights/" folder.
-
-### AbdomenCT-1K models
-- We also trained models in [AbdomenCT-1K](https://github.com/JunMa11/AbdomenCT-1K) dataset. 
-- You can download the models through [Baidu Netdisk](https://pan.baidu.com/s/1HhUiStKyBVbWNTvY1nHwNQ), password:ks66
-
 ### Training
-Remark: Coarse segmentation is trained on Nvidia GeForce 2080Ti(Number:8), while fine segmentation on Nvidia A100(Number:4). If you use different hardware, please set the "ENVIRONMENT.NUM_GPU", "DATA_LOADER.NUM_WORKER" and "DATA_LOADER.BATCH_SIZE" in 'FlareSeg/coarse_base_seg/config.yaml' and 'FlareSeg/fine_efficient_seg/config.yaml' files. You also need to set the 'nproc_per_node' in 'FlareSeg/coarse_base_seg/run.sh' file.
+Remark: Coarse segmentation is trained on Nvidia GeForce 3090(Number:1), while fine segmentation on Nvidia A6000(Number:1). If you use different hardware, please set the "ENVIRONMENT.NUM_GPU", "DATA_LOADER.NUM_WORKER" and "DATA_LOADER.BATCH_SIZE" in 'FlareSeg/coarse_base_seg/config.yaml' and 'FlareSeg/fine_efficient_seg/config.yaml' files. You also need to set the 'nproc_per_node' in 'FlareSeg/coarse_base_seg/run.sh' file.
 #### Coarse segmentation:
 - Edit the 'FlareSeg/coarse_base_seg/config.yaml' and 'FlareSeg/coarse_base_seg/run.sh'
 - Train coarse segmentation with the following command:
@@ -154,16 +132,8 @@ sh run.sh
 sh predict.sh
 ```
 
-### Evaluation:
-Refer to [FLARE2021 Evaluation](https://github.com/JunMa11/FLARE2021/tree/main/Evaluation).
-
-## Contact
-This repository is currently maintained by Fan Zhang (zf2016@mail.ustc.edu.cn) and Yu Wang (wangyu@fosun.com)
-
 ## References
-[1] Z. e. a. Zhu, “A 3d coarse-to-fine framework for volumetric medical image segmentation.” 2018 International Conference on 3D Vision (3DV), 2018.
+[1]  Z. Zhu, Y. Xia, W. Shen, E. Fishman, A. Yuille, A 3D coarse-to-fine framework for volumetric medical image segmentation,  2018 International conference on 3D vision (3DV), IEEE, 2018, pp. 682-690.
 
-[2] Q. e. a. Hou, “Strip pooling: Rethinking spatial pooling for scene parsing.” 2020 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2020.
+[2] F. Zhang, Y. Wang, H. Yang, Efficient Context-Aware Network for Abdominal Multi-organ Segmentation, arXiv preprint arXiv:2109.10601, (2021).
 
-## Acknowledgement
-Thanks for FLARE organizers with the donation of the dataset.
