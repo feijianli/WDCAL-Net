@@ -1,0 +1,430 @@
+Found 1 GPU(s)
+0
+<pynvml.nvml.LP_struct_c_nvmlDevice_t object at 0x7ff0ebdf3830>
+c_nvmlMemory_t(total: 51527024640 B, free: 34737422336 B, used: 16789602304 B)
+0.3258407102157102
+[0]
+Using GPU 0
+Start training, time: 1678676717.6007957
+experiment_1 is processing...
+/home/cq360/anaconda3/envs/nnUNet/lib/python3.7/site-packages/sklearn/utils/validation.py:37: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  LARGE_SPARSE_SUPPORTED = LooseVersion(scipy_version) >= '0.14.0'
+Selected optimization level O1:  Insert automatic casts around Pytorch functions and Tensor methods.
+
+Defaults for this optimization level are:
+enabled                : True
+opt_level              : O1
+cast_model_type        : None
+patch_torch_functions  : True
+keep_batchnorm_fp32    : None
+master_weights         : None
+loss_scale             : dynamic
+Processing user overrides (additional kwargs that are not None)...
+After processing overrides, optimization options are:
+enabled                : True
+opt_level              : O1
+cast_model_type        : None
+patch_torch_functions  : True
+keep_batchnorm_fp32    : None
+master_weights         : None
+loss_scale             : dynamic
+Warning:  multi_tensor_applier fused unscale kernel is unavailable, possibly because apex was installed without --cuda_ext --cpp_ext. Using Python fallback.  Original ImportError was: ModuleNotFoundError("No module named 'amp_C'")
+Failed to load pre-trained network.
+Logging to ./output/train/experiment_1_EfficientSegNet_ResBaseConvBlock_AnisotropicConvBlock_None_fine_size-192_channel-16_depth-4_loss-dice_metric-dice/fold_1/logs/log.txt
+[39m
+------------ train options -------------
+[0m[39mCOARSE_MODEL:
+  AUXILIARY_CLASS: 1
+  AUXILIARY_TASK: False
+  CONTEXT_BLOCK: None
+  DECODER_CONV_BLOCK: ResTwoLayerConvBlock
+  DECODER_NUM_BLOCK: 1
+  DEEP_SUPERVISION: False
+  ENCODER_CONV_BLOCK: ResFourLayerConvBlock
+  INPUT_SIZE: [160, 160, 160]
+  IS_DEEP_SUPERVISION: False
+  IS_DYNAMIC_EMPTY_CACHE: False
+  IS_POSTPROCESS: False
+  IS_PREPROCESS: True
+  META_ARCHITECTURE: UNet
+  NUM_BLOCKS: [2, 2, 2, 2]
+  NUM_CHANNELS: [8, 16, 32, 64, 128]
+  NUM_CLASSES: 4
+  NUM_DEPTH: 4
+  WEIGHT_DIR: None
+DATA_AUGMENT:
+  IS_ADD_GAUSSIAN_NOISE: False
+  IS_CHANGE_ROI_HU: True
+  IS_ELASTIC_TRANSFORM: False
+  IS_ENABLE: True
+  IS_RANDOM_CROP_TO_LABELS: True
+  IS_RANDOM_FLIP: False
+  IS_RANDOM_ROTATE: False
+  IS_RANDOM_SHIFT: False
+  MAX_EXTEND_SIZE: 40
+  ROI_HU_RANGE: [-200, 200]
+  ROTATE_ANGLE: [-10, 10]
+  SHIFT_MAX_RATIO: 0.3
+DATA_LOADER:
+  BAD_CASE_AUGMENT_TIMES: 3
+  BAD_CASE_SERIES_IDS_TXT: /home/cq360/ZHG/EfficientSegmentation-master/FlareSeg/dataset1/file_list/lesion_case.txt
+  BATCH_SIZE: 2
+  EXTEND_SIZE: 20
+  FIVE_FOLD_LIST: [1]
+  IS_COARSE: False
+  IS_NORMALIZATION_DIRECTION: True
+  IS_NORMALIZATION_HU: True
+  LABEL_INDEX: [1, 2, 3, 4]
+  LABEL_NAME: ['Liver', 'Kidney', 'Spleen', 'Pancreas']
+  LABEL_NUM: [1, 2, 1, 1]
+  NUM_WORKER: 4
+  TEST_DB_FILE: /home/cq360/ZHG/EfficientSegmentation-master/FlareSeg/dataset1/db/seg_raw_test
+  TEST_IMAGE_DIR: None
+  TEST_MASK_DIR: None
+  TEST_SERIES_IDS_TXT: None
+  TRAIN_DB_FILE: /home/cq360/ZHG/EfficientSegmentation-master/FlareSeg/dataset1/db/seg_train_fold_1
+  TRAIN_VAL_FOLD: 1
+  VAL_DB_FILE: /home/cq360/ZHG/EfficientSegmentation-master/FlareSeg/dataset1/db/seg_val_fold_1
+  WINDOW_LEVEL: [-325, 325]
+DATA_PREPARE:
+  BAD_CASE_SERIES_IDS_TXT: None
+  DEFAULT_TRAIN_DB: None
+  DEFAULT_VAL_DB: None
+  EXTEND_SIZE: 20
+  IS_NORMALIZATION_DIRECTION: True
+  IS_SMOOTH_MASK: False
+  IS_SPLIT_5FOLD: False
+  MASK_LABEL: [1, 2, 3, 4]
+  OUT_COARSE_SIZE: [160, 160, 160]
+  OUT_COARSE_SPACING: None
+  OUT_DIR: None
+  OUT_FINE_SIZE: [192, 192, 192]
+  OUT_FINE_SPACING: None
+  TEST_IMAGE_DIR: None
+  TEST_MASK_DIR: None
+  TEST_SERIES_IDS_TXT: None
+  TRAIN_IMAGE_DIR: None
+  TRAIN_MASK_DIR: None
+  TRAIN_SERIES_IDS_TXT: None
+  VAL_RATIO: 0.2
+ENVIRONMENT:
+  CUDA: True
+  DATA_BASE_DIR: /home/cq360/ZHG/EfficientSegmentation-master/FlareSeg/dataset1/
+  EXPERIMENT_NAME: experiment_1
+  INIT_METHOD: tcp://127.0.0.1:23456
+  IS_SMOKE_TEST: False
+  MONITOR_TIME_INTERVAL: 0.1
+  NUM_GPU: 1
+  PHASE: train
+  RANK: 0
+  SEED: 1
+FINE_MODEL:
+  AUXILIARY_CLASS: 1
+  AUXILIARY_TASK: False
+  CONTEXT_BLOCK: None
+  DECODER_CONV_BLOCK: AnisotropicConvBlock
+  DECODER_NUM_BLOCK: 1
+  DEEP_SUPERVISION: False
+  ENCODER_CONV_BLOCK: ResBaseConvBlock
+  INPUT_SIZE: [192, 192, 192]
+  IS_DEEP_SUPERVISION: False
+  IS_DYNAMIC_EMPTY_CACHE: False
+  IS_POSTPROCESS: True
+  IS_PREPROCESS: True
+  META_ARCHITECTURE: EfficientSegNet
+  NUM_BLOCKS: [1, 1, 1, 1]
+  NUM_CHANNELS: [16, 32, 64, 128, 256]
+  NUM_CLASSES: 4
+  NUM_DEPTH: 4
+  WEIGHT_DIR: None
+TESTING:
+  BATCH_SIZE: 1
+  COARSE_MODEL_WEIGHT_DIR: ../model_weights/base_coarse_model/best_model.pt
+  FINE_MODEL_WEIGHT_DIR: None
+  IS_FP16: True
+  IS_POST_PROCESS: True
+  IS_SAVE_MASK: True
+  IS_SYNCHRONIZATION: False
+  NUM_WORKER: 3
+  OUT_RESAMPLE_MODE: 3
+  SAVER_DIR: ./output/test
+TRAINING:
+  ACTIVATION: sigmoid
+  IS_APEX_TRAIN: True
+  IS_DISTRIBUTED_TRAIN: False
+  LOSS: dice
+  METRIC: dice
+  OPTIMIZER:
+    L2_PENALTY: 5e-05
+    LR: 0.001
+    METHOD: adam
+  SAVER:
+    SAVER_DIR: ./output/train
+    SAVER_FREQUENCY: 5
+  SCHEDULER:
+    LR_SCHEDULE: cosineLR
+    START_EPOCH: 0
+    TOTAL_EPOCHS: 200
+[0m[39m-------------- End ----------------
+
+[0m[39mstart training 1th fold...
+[0mbad_case_path /home/cq360/ZHG/EfficientSegmentation-master/FlareSeg/dataset1/file_list/lesion_case.txt
+True
+train
+bad_case_uids []
+bad_case_path /home/cq360/ZHG/EfficientSegmentation-master/FlareSeg/dataset1/file_list/lesion_case.txt
+True
+val
+bad_case_uids None
+[39mPreprocess parallels: 4
+[0m[39mtrain samples per epoch: 160
+[0m[39mval samples per epoch: 40
+[0m[39m
+Starting training epoch 0
+[0m/home/cq360/anaconda3/envs/nnUNet/lib/python3.7/site-packages/sklearn/utils/validation.py:37: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  LARGE_SPARSE_SUPPORTED = LooseVersion(scipy_version) >= '0.14.0'
+torch.Size([2, 4, 192, 192, 192])
+torch.Size([2, 5, 5, 5, 5])
+torch.Size([2, 5, 125])
+torch.Size([2, 5, 192, 192, 192])
+torch.Size([2, 5, 7077888])
+Traceback (most recent call last):
+  File "run.py", line 107, in <module>
+    run_multiprocessing(segmentation.run, cfg, cfg.ENVIRONMENT.NUM_GPU)
+  File "/home/cq360/ZHG/EfficientSegmentation-master/Common/gpu_utils.py", line 45, in run_multiprocessing
+    join=True)
+  File "/home/cq360/anaconda3/envs/nnUNet/lib/python3.7/site-packages/torch/multiprocessing/spawn.py", line 230, in spawn
+    return start_processes(fn, args, nprocs, join, daemon, start_method='spawn')
+  File "/home/cq360/anaconda3/envs/nnUNet/lib/python3.7/site-packages/torch/multiprocessing/spawn.py", line 188, in start_processes
+    while not context.join():
+  File "/home/cq360/anaconda3/envs/nnUNet/lib/python3.7/site-packages/torch/multiprocessing/spawn.py", line 150, in join
+    raise ProcessRaisedException(msg, error_index, failed_process.pid)
+torch.multiprocessing.spawn.ProcessRaisedException: 
+
+-- Process 0 terminated with the following error:
+Traceback (most recent call last):
+  File "/home/cq360/anaconda3/envs/nnUNet/lib/python3.7/site-packages/torch/multiprocessing/spawn.py", line 59, in _wrap
+    fn(i, *args)
+  File "/home/cq360/ZHG/EfficientSegmentation-master/BaseSeg/engine/segmentor_multiprocess.py", line 175, in run
+    self.do_train(self.cfg.DATA_LOADER.TRAIN_VAL_FOLD)
+  File "/home/cq360/ZHG/EfficientSegmentation-master/BaseSeg/engine/segmentor_multiprocess.py", line 370, in do_train
+    self._train(epoch)
+  File "/home/cq360/ZHG/EfficientSegmentation-master/BaseSeg/engine/segmentor_multiprocess.py", line 414, in _train
+    ideal_masks = ideal_affinity_matrix(masks,self.cfg['NUM_CLASSES'])
+KeyError: 'NUM_CLASSES'
+
+Found 1 GPU(s)
+0
+<pynvml.nvml.LP_struct_c_nvmlDevice_t object at 0x7fbf2beb3950>
+c_nvmlMemory_t(total: 51527024640 B, free: 34737422336 B, used: 16789602304 B)
+0.3258407102157102
+[0]
+Using GPU 0
+Start training, time: 1678676966.0950453
+experiment_1 is processing...
+/home/cq360/anaconda3/envs/nnUNet/lib/python3.7/site-packages/sklearn/utils/validation.py:37: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  LARGE_SPARSE_SUPPORTED = LooseVersion(scipy_version) >= '0.14.0'
+Selected optimization level O1:  Insert automatic casts around Pytorch functions and Tensor methods.
+
+Defaults for this optimization level are:
+enabled                : True
+opt_level              : O1
+cast_model_type        : None
+patch_torch_functions  : True
+keep_batchnorm_fp32    : None
+master_weights         : None
+loss_scale             : dynamic
+Processing user overrides (additional kwargs that are not None)...
+After processing overrides, optimization options are:
+enabled                : True
+opt_level              : O1
+cast_model_type        : None
+patch_torch_functions  : True
+keep_batchnorm_fp32    : None
+master_weights         : None
+loss_scale             : dynamic
+Warning:  multi_tensor_applier fused unscale kernel is unavailable, possibly because apex was installed without --cuda_ext --cpp_ext. Using Python fallback.  Original ImportError was: ModuleNotFoundError("No module named 'amp_C'")
+Failed to load pre-trained network.
+Logging to ./output/train/experiment_1_EfficientSegNet_ResBaseConvBlock_AnisotropicConvBlock_None_fine_size-192_channel-16_depth-4_loss-dice_metric-dice/fold_1/logs/log.txt
+[39m
+------------ train options -------------
+[0m[39mCOARSE_MODEL:
+  AUXILIARY_CLASS: 1
+  AUXILIARY_TASK: False
+  CONTEXT_BLOCK: None
+  DECODER_CONV_BLOCK: ResTwoLayerConvBlock
+  DECODER_NUM_BLOCK: 1
+  DEEP_SUPERVISION: False
+  ENCODER_CONV_BLOCK: ResFourLayerConvBlock
+  INPUT_SIZE: [160, 160, 160]
+  IS_DEEP_SUPERVISION: False
+  IS_DYNAMIC_EMPTY_CACHE: False
+  IS_POSTPROCESS: False
+  IS_PREPROCESS: True
+  META_ARCHITECTURE: UNet
+  NUM_BLOCKS: [2, 2, 2, 2]
+  NUM_CHANNELS: [8, 16, 32, 64, 128]
+  NUM_CLASSES: 4
+  NUM_DEPTH: 4
+  WEIGHT_DIR: None
+DATA_AUGMENT:
+  IS_ADD_GAUSSIAN_NOISE: False
+  IS_CHANGE_ROI_HU: True
+  IS_ELASTIC_TRANSFORM: False
+  IS_ENABLE: True
+  IS_RANDOM_CROP_TO_LABELS: True
+  IS_RANDOM_FLIP: False
+  IS_RANDOM_ROTATE: False
+  IS_RANDOM_SHIFT: False
+  MAX_EXTEND_SIZE: 40
+  ROI_HU_RANGE: [-200, 200]
+  ROTATE_ANGLE: [-10, 10]
+  SHIFT_MAX_RATIO: 0.3
+DATA_LOADER:
+  BAD_CASE_AUGMENT_TIMES: 3
+  BAD_CASE_SERIES_IDS_TXT: /home/cq360/ZHG/EfficientSegmentation-master/FlareSeg/dataset1/file_list/lesion_case.txt
+  BATCH_SIZE: 2
+  EXTEND_SIZE: 20
+  FIVE_FOLD_LIST: [1]
+  IS_COARSE: False
+  IS_NORMALIZATION_DIRECTION: True
+  IS_NORMALIZATION_HU: True
+  LABEL_INDEX: [1, 2, 3, 4]
+  LABEL_NAME: ['Liver', 'Kidney', 'Spleen', 'Pancreas']
+  LABEL_NUM: [1, 2, 1, 1]
+  NUM_WORKER: 4
+  TEST_DB_FILE: /home/cq360/ZHG/EfficientSegmentation-master/FlareSeg/dataset1/db/seg_raw_test
+  TEST_IMAGE_DIR: None
+  TEST_MASK_DIR: None
+  TEST_SERIES_IDS_TXT: None
+  TRAIN_DB_FILE: /home/cq360/ZHG/EfficientSegmentation-master/FlareSeg/dataset1/db/seg_train_fold_1
+  TRAIN_VAL_FOLD: 1
+  VAL_DB_FILE: /home/cq360/ZHG/EfficientSegmentation-master/FlareSeg/dataset1/db/seg_val_fold_1
+  WINDOW_LEVEL: [-325, 325]
+DATA_PREPARE:
+  BAD_CASE_SERIES_IDS_TXT: None
+  DEFAULT_TRAIN_DB: None
+  DEFAULT_VAL_DB: None
+  EXTEND_SIZE: 20
+  IS_NORMALIZATION_DIRECTION: True
+  IS_SMOOTH_MASK: False
+  IS_SPLIT_5FOLD: False
+  MASK_LABEL: [1, 2, 3, 4]
+  OUT_COARSE_SIZE: [160, 160, 160]
+  OUT_COARSE_SPACING: None
+  OUT_DIR: None
+  OUT_FINE_SIZE: [192, 192, 192]
+  OUT_FINE_SPACING: None
+  TEST_IMAGE_DIR: None
+  TEST_MASK_DIR: None
+  TEST_SERIES_IDS_TXT: None
+  TRAIN_IMAGE_DIR: None
+  TRAIN_MASK_DIR: None
+  TRAIN_SERIES_IDS_TXT: None
+  VAL_RATIO: 0.2
+ENVIRONMENT:
+  CUDA: True
+  DATA_BASE_DIR: /home/cq360/ZHG/EfficientSegmentation-master/FlareSeg/dataset1/
+  EXPERIMENT_NAME: experiment_1
+  INIT_METHOD: tcp://127.0.0.1:23456
+  IS_SMOKE_TEST: False
+  MONITOR_TIME_INTERVAL: 0.1
+  NUM_GPU: 1
+  PHASE: train
+  RANK: 0
+  SEED: 1
+FINE_MODEL:
+  AUXILIARY_CLASS: 1
+  AUXILIARY_TASK: False
+  CONTEXT_BLOCK: None
+  DECODER_CONV_BLOCK: AnisotropicConvBlock
+  DECODER_NUM_BLOCK: 1
+  DEEP_SUPERVISION: False
+  ENCODER_CONV_BLOCK: ResBaseConvBlock
+  INPUT_SIZE: [192, 192, 192]
+  IS_DEEP_SUPERVISION: False
+  IS_DYNAMIC_EMPTY_CACHE: False
+  IS_POSTPROCESS: True
+  IS_PREPROCESS: True
+  META_ARCHITECTURE: EfficientSegNet
+  NUM_BLOCKS: [1, 1, 1, 1]
+  NUM_CHANNELS: [16, 32, 64, 128, 256]
+  NUM_CLASSES: 4
+  NUM_DEPTH: 4
+  WEIGHT_DIR: None
+TESTING:
+  BATCH_SIZE: 1
+  COARSE_MODEL_WEIGHT_DIR: ../model_weights/base_coarse_model/best_model.pt
+  FINE_MODEL_WEIGHT_DIR: None
+  IS_FP16: True
+  IS_POST_PROCESS: True
+  IS_SAVE_MASK: True
+  IS_SYNCHRONIZATION: False
+  NUM_WORKER: 3
+  OUT_RESAMPLE_MODE: 3
+  SAVER_DIR: ./output/test
+TRAINING:
+  ACTIVATION: sigmoid
+  IS_APEX_TRAIN: True
+  IS_DISTRIBUTED_TRAIN: False
+  LOSS: dice
+  METRIC: dice
+  OPTIMIZER:
+    L2_PENALTY: 5e-05
+    LR: 0.001
+    METHOD: adam
+  SAVER:
+    SAVER_DIR: ./output/train
+    SAVER_FREQUENCY: 5
+  SCHEDULER:
+    LR_SCHEDULE: cosineLR
+    START_EPOCH: 0
+    TOTAL_EPOCHS: 200
+[0m[39m-------------- End ----------------
+
+[0m[39mstart training 1th fold...
+[0mbad_case_path /home/cq360/ZHG/EfficientSegmentation-master/FlareSeg/dataset1/file_list/lesion_case.txt
+True
+train
+bad_case_uids []
+bad_case_path /home/cq360/ZHG/EfficientSegmentation-master/FlareSeg/dataset1/file_list/lesion_case.txt
+True
+val
+bad_case_uids None
+[39mPreprocess parallels: 4
+[0m[39mtrain samples per epoch: 160
+[0m[39mval samples per epoch: 40
+[0m[39m
+Starting training epoch 0
+[0m/home/cq360/anaconda3/envs/nnUNet/lib/python3.7/site-packages/sklearn/utils/validation.py:37: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  LARGE_SPARSE_SUPPORTED = LooseVersion(scipy_version) >= '0.14.0'
+torch.Size([2, 4, 192, 192, 192])
+torch.Size([2, 5, 5, 5, 5])
+torch.Size([2, 5, 125])
+torch.Size([2, 5, 192, 192, 192])
+torch.Size([2, 5, 7077888])
+Traceback (most recent call last):
+  File "run.py", line 107, in <module>
+    run_multiprocessing(segmentation.run, cfg, cfg.ENVIRONMENT.NUM_GPU)
+  File "/home/cq360/ZHG/EfficientSegmentation-master/Common/gpu_utils.py", line 45, in run_multiprocessing
+    join=True)
+  File "/home/cq360/anaconda3/envs/nnUNet/lib/python3.7/site-packages/torch/multiprocessing/spawn.py", line 230, in spawn
+    return start_processes(fn, args, nprocs, join, daemon, start_method='spawn')
+  File "/home/cq360/anaconda3/envs/nnUNet/lib/python3.7/site-packages/torch/multiprocessing/spawn.py", line 188, in start_processes
+    while not context.join():
+  File "/home/cq360/anaconda3/envs/nnUNet/lib/python3.7/site-packages/torch/multiprocessing/spawn.py", line 150, in join
+    raise ProcessRaisedException(msg, error_index, failed_process.pid)
+torch.multiprocessing.spawn.ProcessRaisedException: 
+
+-- Process 0 terminated with the following error:
+Traceback (most recent call last):
+  File "/home/cq360/anaconda3/envs/nnUNet/lib/python3.7/site-packages/torch/multiprocessing/spawn.py", line 59, in _wrap
+    fn(i, *args)
+  File "/home/cq360/ZHG/EfficientSegmentation-master/BaseSeg/engine/segmentor_multiprocess.py", line 175, in run
+    self.do_train(self.cfg.DATA_LOADER.TRAIN_VAL_FOLD)
+  File "/home/cq360/ZHG/EfficientSegmentation-master/BaseSeg/engine/segmentor_multiprocess.py", line 370, in do_train
+    self._train(epoch)
+  File "/home/cq360/ZHG/EfficientSegmentation-master/BaseSeg/engine/segmentor_multiprocess.py", line 414, in _train
+    ideal_masks = ideal_affinity_matrix(masks,self.cfg['NUM_CLASSES'])
+KeyError: 'NUM_CLASSES'
+
